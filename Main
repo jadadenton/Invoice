@@ -1,0 +1,69 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        ArrayList <String> products = new ArrayList <String>();
+        ArrayList <Double> prices = new ArrayList<Double>();
+        products.add("Bison Sweater");
+        prices.add(55.99);
+        products.add("Bison Tee");
+        prices.add(14.99);
+        products.add("Bison Hoodie");
+        prices.add(23.99);
+        products.add("Bison Bumpersticker");
+        prices.add(4.99);
+
+        Scanner input = new Scanner(System.in);
+        String response = "";
+        ArrayList<String> purchases = new ArrayList<String>();
+
+        do {
+            System.out.println("Make a Selection");
+            System.out.println("1) add purchase 2) change purchase 3) show purchases 4) finish transaction");
+            response = input.nextLine();
+
+            if (response.equals("1")) {
+                for (int i = 0; i < products.size(); i++) {
+                    System.out.println(products.get(i) + " " + prices.get(i));
+                }
+
+                    System.out.println("What do you wish to buy?");
+                    response = input.nextLine();
+                    purchases.add(response);
+
+
+            } else if (response.equals("2")) {
+                System.out.println("What do you wish to change?");
+                System.out.println(purchases);
+                response = input.nextLine();
+                purchases.remove(response);
+
+
+            } else if (response.equals("3")) {
+                System.out.println("Purchases Displayed");
+                System.out.println(purchases);
+            }
+        } while (! response.equals("4"));
+
+        double totalcost = 0.0;
+        for (int i = 0; i < purchases.size(); i++) {
+
+        int j=0;
+            do {
+                if (purchases.get(i) .equals(products.get(j)))
+                {
+                    double val = prices.get(j);
+                   totalcost = totalcost + val;
+
+                }
+                j++;
+            } while (j < products.size());
+
+        }
+        System.out.println(totalcost);
+
+    }
